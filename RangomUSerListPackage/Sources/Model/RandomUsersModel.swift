@@ -19,15 +19,18 @@ public struct RandomUsersResponse: Codable {
 }
 
 public struct ResultsResponse: Codable, Equatable, Hashable {
+    public let gender: String
     public let name: NameResponse
     public let email: String
     public let login: LoginResponse
     public let picture: PictureResponse
     
-    public init(name: NameResponse = NameResponse(),
+    public init(gender: String,
+                name: NameResponse = NameResponse(),
                 email: String = "",
                 login: LoginResponse = LoginResponse(),
                 picture: PictureResponse = PictureResponse()) {
+        self.gender = gender
         self.name = name
         self.email = email
         self.login = login

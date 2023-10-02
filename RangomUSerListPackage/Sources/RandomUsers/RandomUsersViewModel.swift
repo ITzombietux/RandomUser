@@ -10,6 +10,7 @@ import Dependencies
 import Model
 import APIDependency
 
+@MainActor
 public final class RandomUsersViewModel: ObservableObject {
     @Published var randomUsers: [ResultsResponse] = []
     
@@ -20,6 +21,15 @@ public final class RandomUsersViewModel: ObservableObject {
     public func onAppear() async {
         do {
             self.randomUsers = try await self.apiClient.getRandomUsers().results
+        } catch {}
+    }
+    
+    public func moreLoad() async {
+        do {
+            let randomUsers = try await self.apiClient.getRandomUsers().results
+            randomUsers.forEach { randomUser in
+                self.randomUsers.append(randomUser)
+            }
         } catch {}
     }
 }

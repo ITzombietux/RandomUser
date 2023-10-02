@@ -18,7 +18,7 @@ public struct RandomUsersResponse: Codable {
     }
 }
 
-public struct ResultsResponse: Codable {
+public struct ResultsResponse: Codable, Equatable, Hashable {
     public let name: NameResponse
     public let email: String
     public let login: LoginResponse
@@ -35,7 +35,7 @@ public struct ResultsResponse: Codable {
     }
 }
 
-public struct NameResponse: Codable {
+public struct NameResponse: Codable, Equatable, Hashable {
     public let title: String
     public let first: String
     public let last: String
@@ -47,7 +47,7 @@ public struct NameResponse: Codable {
     }
 }
 
-public struct LoginResponse: Codable {
+public struct LoginResponse: Codable, Equatable, Hashable {
     public let uuid: String
     public let username: String
     
@@ -57,7 +57,7 @@ public struct LoginResponse: Codable {
     }
 }
 
-public struct PictureResponse: Codable {
+public struct PictureResponse: Codable, Equatable, Hashable {
     public let large: String
     public let medium: String
     public let thumbnail: String
@@ -80,5 +80,28 @@ public struct InfoResponse: Codable {
         self.results = results
         self.page = page
         self.version = version
+    }
+}
+
+// MARK: - Domain
+public struct RandomUsersModel: Equatable, Hashable {
+    public let result: [RandomUserModel]
+    
+    public init(result: [RandomUserModel]) {
+        self.result = result
+    }
+}
+
+public struct RandomUserModel: Equatable, Hashable {
+    public let uuid: String
+    public let name: String
+    public let email: String
+    public let thumbnail: String
+    
+    public init(uuid: String, name: String, email: String, thumbnail: String) {
+        self.uuid = uuid
+        self.name = name
+        self.email = email
+        self.thumbnail = thumbnail
     }
 }

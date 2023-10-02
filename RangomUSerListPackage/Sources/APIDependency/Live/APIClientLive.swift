@@ -15,7 +15,7 @@ extension APIClient: DependencyKey {
     public static let liveValue = Self(
         getRandomUsers: {
             let provider = MoyaProvider<RandomUserAPI>()
-            var randomUsers: RandomUsersResponse?
+            var randomUsers = RandomUsersResponse()
             
             provider.request(.getRandomUser) { result in
                 switch result {

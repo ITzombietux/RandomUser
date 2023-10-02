@@ -70,6 +70,7 @@ let package = Package(
             name: "RandomUsers",
             dependencies: [
                 "RandomUser"
+                "APIDependency"
             ]
         ),
         .target(

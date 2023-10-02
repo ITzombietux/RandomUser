@@ -15,10 +15,26 @@ public struct RandomUsersView: View {
     public init() {}
     
     public var body: some View {
-        ScrollView {
-            ForEach(viewModel.randomUsers, id: \.self) { randomUser in
-                
+        VStack(alignment: .leading) {
+            Text("랜덤 유저")
+                .font(.system(size: 34, weight: .bold))
+                .padding(.top)
+                .padding()
+            
+            List {
+                ForEach(viewModel.randomUsers, id: \.self) { randomUser in
+                    RandomUserView(randomUser: randomUser)
+                        .onAppear {
+                            if randomUser == self.viewModel.randomUsers.last {
+                                Task {
+                                    await viewModel.moreLoad()
+                                }
+                            }
+                        }
+                }
             }
+            
+            Spacer()
         }
         .onAppear {
             Task {

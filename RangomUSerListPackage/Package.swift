@@ -69,7 +69,7 @@ let package = Package(
         .target(
             name: "RandomUsers",
             dependencies: [
-                "RandomUser"
+                "RandomUser",
                 "APIDependency"
             ]
         ),

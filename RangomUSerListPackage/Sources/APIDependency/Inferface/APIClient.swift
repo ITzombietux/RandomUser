@@ -36,7 +36,7 @@ extension RandomUserAPI: TargetType {
     public var task: Moya.Task {
         return .requestParameters(
             parameters: ["results" : "20",
-                         "inc" : "name,enail,picture,male,login"],
+                         "inc" : "name,email,picture,gender,login"],
             encoding: URLEncoding.queryString)
     }
     

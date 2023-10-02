@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Root
+
 struct RandomUserListApp: View {
     var body: some View {
         RootView()

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  RandomUsersViewModel.swift
 //  
 //
 //  Created by 10004 on 2023/10/02.

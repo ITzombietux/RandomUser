@@ -76,7 +76,8 @@ let package = Package(
         .target(
             name: "RandomUser",
             dependencies: [
-                "RandomUserDetail"
+                "RandomUserDetail",
+                .product(name: "Kingfisher", package: "Kingfisher")
             ]
         ),
         .target(

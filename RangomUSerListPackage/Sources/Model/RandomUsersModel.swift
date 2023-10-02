@@ -8,10 +8,10 @@
 import Foundation
 
 public struct RandomUsersResponse: Codable {
-    public let results: ResultsResponse
+    public let results: [ResultsResponse]
     public let info: InfoResponse
     
-    public init(results: ResultsResponse = ResultsResponse(),
+    public init(results: [ResultsResponse] = [],
                 info: InfoResponse = InfoResponse()) {
         self.results = results
         self.info = info

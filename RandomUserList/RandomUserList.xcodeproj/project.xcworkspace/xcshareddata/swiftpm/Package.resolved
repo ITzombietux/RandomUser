@@ -110,6 +110,24 @@
         }
       },
       {
+        "package": "swiftui-introspect",
+        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
+        "state": {
+          "branch": null,
+          "revision": "121c146fe591b1320238d054ae35c81ffa45f45a",
+          "version": "0.12.0"
+        }
+      },
+      {
+        "package": "SwiftUIRefresh",
+        "repositoryURL": "https://github.com/timbersoftware/SwiftUIRefresh.git",
+        "state": {
+          "branch": null,
+          "revision": "fa8fac7b5eb5c729983a8bef65f094b5e0d12014",
+          "version": "0.0.3"
+        }
+      },
+      {
         "package": "xctest-dynamic-overlay",
         "repositoryURL": "https://github.com/pointfreeco/xctest-dynamic-overlay",
         "state": {

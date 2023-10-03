@@ -24,17 +24,42 @@ public struct ResultsResponse: Codable, Equatable, Hashable {
     public let email: String
     public let login: LoginResponse
     public let picture: PictureResponse
+    public let phone: String
+    public let dob: DobResponse
+    public let location: LocationResponse
     
     public init(gender: String,
                 name: NameResponse = NameResponse(),
                 email: String = "",
                 login: LoginResponse = LoginResponse(),
-                picture: PictureResponse = PictureResponse()) {
+                picture: PictureResponse = PictureResponse(),
+                phone: String = "",
+                dob: DobResponse = DobResponse(),
+                location: LocationResponse = LocationResponse()) {
         self.gender = gender
         self.name = name
         self.email = email
         self.login = login
         self.picture = picture
+        self.phone = phone
+        self.dob = dob
+        self.location = location
+    }
+}
+
+public struct DobResponse: Codable, Equatable, Hashable {
+    public let age: Int
+    
+    public init(age: Int = 0) {
+        self.age = age
+    }
+}
+
+public struct LocationResponse: Codable, Equatable, Hashable {
+    public let country: String
+    
+    public init(country: String = "") {
+        self.country = country
     }
 }
 
@@ -83,28 +108,5 @@ public struct InfoResponse: Codable {
         self.results = results
         self.page = page
         self.version = version
-    }
-}
-
-// MARK: - Domain
-public struct RandomUsersModel: Equatable, Hashable {
-    public let result: [RandomUserModel]
-    
-    public init(result: [RandomUserModel]) {
-        self.result = result
-    }
-}
-
-public struct RandomUserModel: Equatable, Hashable {
-    public let uuid: String
-    public let name: String
-    public let email: String
-    public let thumbnail: String
-    
-    public init(uuid: String, name: String, email: String, thumbnail: String) {
-        self.uuid = uuid
-        self.name = name
-        self.email = email
-        self.thumbnail = thumbnail
     }
 }

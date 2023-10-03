@@ -15,14 +15,14 @@ extension APIClient: DependencyKey {
     public static let liveValue = Self(
         getRandomUsers: {
             let provider = MoyaProvider<RandomUserAPI>()
-            var randomUsers = RandomUsersResponse()
+            var randomUsers: [ResultsResponse] = []
             
             provider.request(.getRandomUser) { result in
                 switch result {
                 case let .success(response) :
-                    guard let randomUsersResponse = try? response.map(RandomUsersResponse.self) else { return }
+                    guard var randomUsersResponse = try? response.map(RandomUsersResponse.self) else { return }
                     
-                    randomUsers = randomUsersResponse
+                    randomUsers = randomUsersResponse.results.filter { $0.gender == "male" }
                 case let .failure(error):
                     return
                 }

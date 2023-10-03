@@ -36,7 +36,7 @@ extension RandomUserAPI: TargetType {
     public var task: Moya.Task {
         return .requestParameters(
             parameters: ["results" : "20",
-                         "inc" : "name,email,picture,gender,login"],
+                         "inc" : "name,email,picture,gender,login,dob,phone,location"],
             encoding: URLEncoding.queryString)
     }
     
@@ -47,7 +47,7 @@ extension RandomUserAPI: TargetType {
 
 //MARK: - Inferface
 public struct APIClient {
-    public var getRandomUsers: @Sendable () async throws -> RandomUsersResponse
+    public var getRandomUsers: @Sendable () async throws -> [ResultsResponse]
 }
 
 extension DependencyValues {

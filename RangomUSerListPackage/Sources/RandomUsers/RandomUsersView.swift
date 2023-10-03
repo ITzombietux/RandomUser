@@ -8,6 +8,8 @@
 import SwiftUI
 
 import RandomUser
+import RandomUserDetail
+import SwiftUIPullToRefresh
 
 public struct RandomUsersView: View {
     @ObservedObject private var viewModel: RandomUsersViewModel = RandomUsersViewModel()
@@ -15,26 +17,33 @@ public struct RandomUsersView: View {
     public init() {}
     
     public var body: some View {
-        VStack(alignment: .leading) {
-            Text("랜덤 유저")
-                .font(.system(size: 34, weight: .bold))
-                .padding(.top)
-                .padding()
-            
+        NavigationView {
             List {
                 ForEach(viewModel.randomUsers, id: \.self) { randomUser in
-                    RandomUserView(randomUser: randomUser)
-                        .onAppear {
-                            if randomUser == self.viewModel.randomUsers.last {
-                                Task {
-                                    await viewModel.moreLoad()
+                    NavigationLink {
+                        RandomUserDetailView(randomUser: randomUser)
+                    } label: {
+                        RandomUserView(randomUser: randomUser)
+                            .onAppear {
+                                if randomUser == self.viewModel.randomUsers.last {
+                                    Task {
+                                        await viewModel.moreLoad()
+                                    }
                                 }
                             }
-                        }
+                    }
                 }
             }
-            
-            Spacer()
+            .navigationBarTitle("RandomUserList")
+            .background(
+                SwiftUIPullToRefresh(
+                    action: {
+                        Task {
+                            await viewModel.onRefresh()
+                        }
+                    },
+                    isShowing: $viewModel.isShowing)
+            )
         }
         .onAppear {
             Task {

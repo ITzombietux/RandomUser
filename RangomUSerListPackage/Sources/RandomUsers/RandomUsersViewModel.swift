@@ -13,6 +13,7 @@ import APIDependency
 @MainActor
 public final class RandomUsersViewModel: ObservableObject {
     @Published var randomUsers: [ResultsResponse] = []
+    @Published var isShowing: Bool = false
     
     public init() {}
     
@@ -21,6 +22,15 @@ public final class RandomUsersViewModel: ObservableObject {
     public func onAppear() async {
         do {
             self.randomUsers = try await self.apiClient.getRandomUsers()
+        } catch {}
+    }
+    
+    public func onRefresh() async {
+        isShowing = true
+        
+        do {
+            self.randomUsers = try await self.apiClient.getRandomUsers()
+            isShowing = false
         } catch {}
     }
     

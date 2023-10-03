@@ -79,12 +79,14 @@ let package = Package(
             name: "RandomUser",
             dependencies: [
                 "RandomUserDetail",
-                .product(name: "Kingfisher", package: "Kingfisher")
             ]
         ),
         .target(
             name: "RandomUserDetail",
-            dependencies: []
+            dependencies: [
+                "Model",
+                .product(name: "Kingfisher", package: "Kingfisher")
+            ]
         ),
         .target(
             name: "APIDependency",

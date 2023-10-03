@@ -26,9 +26,12 @@ public final class RandomUsersViewModel: ObservableObject {
     
     public func moreLoad() async {
         do {
+            let existingUUIDs = randomUsers.map { $0.login.uuid }
             let randomUsers = try await self.apiClient.getRandomUsers().results
             randomUsers.forEach { randomUser in
-                self.randomUsers.append(randomUser)
+                if !existingUUIDs.contains(randomUser.login.uuid) {
+                    self.randomUsers.append(randomUser)
+                }
             }
         } catch {}
     }

@@ -46,7 +46,7 @@ let package = Package(
         .package(url: "https://github.com/Moya/Moya.git", from: .init(stringLiteral: "13.0.0")),
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: .init(stringLiteral: "0.4.2")),
         .package(url: "https://github.com/onevcat/Kingfisher.git", from: .init(stringLiteral: "6.3.1")),
-        .package(url: "https://github.com/timbersoftware/SwiftUIRefresh.git", from: .init(stringLiteral: "0.0.3"))
+        .package(url: "https://github.com/muhammedtanriverdi/SwiftUIPullToRefresh.git", from: .init(stringLiteral: "0.0.1")),
     ],
     targets: [
         .target(
@@ -72,7 +72,7 @@ let package = Package(
             dependencies: [
                 "RandomUser",
                 "APIDependency",
-                .product(name: "SwiftUIRefresh", package: "SwiftUIRefresh")
+                .product(name: "SwiftUIPullToRefresh", package: "SwiftUIPullToRefresh")
             ]
         ),
         .target(

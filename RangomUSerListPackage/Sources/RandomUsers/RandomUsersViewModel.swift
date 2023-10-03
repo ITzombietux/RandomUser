@@ -12,8 +12,8 @@ import APIDependency
 
 @MainActor
 public final class RandomUsersViewModel: ObservableObject {
-    @Published var randomUsers: [ResultsResponse] = []
-    @Published var isShowing: Bool = false
+    @Published public var randomUsers: [ResultsResponse] = []
+    @Published public var isShowing: Bool = false
     
     public init() {}
     
